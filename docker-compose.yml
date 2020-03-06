@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  mongo:
+    image: mongo
+    #container_name: mongo
+    restart: always
+    env_file: .env
+    volumes:
+      - ./volumes/mongodb/data:/data/db
+    expose:
+      - "27017"
+  mongo-express:
+    image: mongo-express
+    #container_name: mongo-express
+    restart: always
+    ports:
+      - 8881:8081
+    env_file: .env
+    depends_on:
+      - mongo
+  ocs-metadata:
+    build: .
+    image: quay.io/zmc/ocs-metadata
+    env_file: .env
+    restart: always
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongo
