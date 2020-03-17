@@ -15,18 +15,6 @@ HATEOAS = False
 EXTRA_RESPONSE_FIELDS = []
 RENDERERS = ['eve.render.JSONRenderer']
 
-products = {
-    'additional_lookup': {
-        'url': 'regex("[\w]+")',
-        'field': 'name',
-    },
-    'schema': {
-        'name': {
-            'type': 'string',
-            'unique': True,
-        },
-    },
-}
 builds = {
     'additional_lookup': {
         'url': 'regex(".+")',
@@ -36,13 +24,13 @@ builds = {
         'product': {
             'type': 'string',
             'required': True,
-            'data_relation': {
-                'resource': 'products',
-                'field': 'name',
-                'embeddable': True,
-            },
         },
         'version': {
+            'type': 'string',
+            'required': True,
+            'unique': True,
+        },
+        'url': {
             'type': 'string',
             'required': True,
             'unique': True,
@@ -53,13 +41,14 @@ builds = {
                 'type': 'dict',
                 'schema': {
                     'name': {'type': 'string'},
-                    'version': {'type': 'string'},
+                    'tag': {'type': 'string'},
+                    'image': {'type': 'string'},
+                    'nvr': {'type': 'string'},
                 },
             },
         },
     },
 }
 DOMAIN = {
-    'products': products,
     'builds': builds,
 }
