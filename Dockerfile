@@ -1,9 +1,7 @@
-#FROM fedora:30
 FROM python:3.7-alpine
+COPY requirements.txt main.py settings.py scrape.py /data/
 RUN \
-  mkdir /data && \
-  pip3 --no-cache-dir install eve gunicorn
-COPY main.py settings.py /data/
+  pip3 --no-cache-dir install -r /data/requirements.txt
 EXPOSE 5000
 WORKDIR /data
 ENTRYPOINT ["/bin/sh"]
