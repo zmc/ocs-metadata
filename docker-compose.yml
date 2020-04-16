@@ -10,6 +10,14 @@ services:
       - ./volumes/mongodb/data:/data/db
     expose:
       - "27017"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
   mongo-express:
     image: mongo-express
     #container_name: mongo-express
@@ -19,6 +27,14 @@ services:
     env_file: .env
     depends_on:
       - mongo
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
   ocs-metadata:
     build: .
     image: quay.io/zmc/ocs-metadata
@@ -28,3 +44,11 @@ services:
       - 5000:5000
     depends_on:
       - mongo
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
