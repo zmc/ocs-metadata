@@ -42,9 +42,9 @@ will likely require modification to work with any others:
 While submitting single builds via `curl` is trivial, submitting many builds is easier with this basic companion script:
 
     # Submit builds from a file
-    ./submit.py -u https://ocs-metadata.example.com ./builds.json
+    ./submit.py -u https://ocs-metadata.example.com/builds/ ./builds.json
     # Submit builds from stdin
-    ./submit.py -u https://ocs-metadata.example.com -
+    ./submit.py -u https://ocs-metadata.example.com/builds/ -
 
 
 Deploying
