@@ -43,6 +43,7 @@ builds = {
                     'name': {'type': 'string'},
                     'tag': {'type': 'string'},
                     'image': {'type': 'string'},
+                    'bundle': {'type': 'string'},
                     'nvr': {'type': 'string'},
                 },
             },
