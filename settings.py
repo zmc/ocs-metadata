@@ -6,6 +6,7 @@ MONGO_PASSWORD = os.environ['MONGO_PASSWORD']
 MONGO_DBNAME = os.environ.get('MONGO_DBNAME', 'build-metadata')
 MONGO_AUTH_SOURCE = os.environ.get('MONGO_AUTH_SOURCE', 'admin')
 DEBUG = os.environ.get('DEBUG', False)
+X_DOMAINS = os.environ.get('X_DOMAINS', None)
 
 RESOURCE_METHODS = ['GET', 'POST']
 ITEM_METHODS = ['GET', 'PATCH', 'PUT']
